@@ -4,7 +4,12 @@
 			<p>
 			  <%= @visual.description %>
 			</p>
-			<%= link_to 'Edit', edit_visual_path(@visual) %> |
+			<p>
+			  <%= @visual.user.name %>
+			</p>
+			<% if current_user == @visual.user %>
+				<%= link_to 'Edit', edit_visual_path(@visual) %> |
+				<% end %>
 			<%= link_to 'Back', visuals_path %>
 		</div>	
 	</div>

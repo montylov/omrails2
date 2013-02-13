@@ -1,4 +1,6 @@
 class VisualsController < ApplicationController
+before_filter :authenticate_user!, except: [:index]
+
   # GET /visuals
   # GET /visuals.json
   def index
@@ -24,7 +26,7 @@ class VisualsController < ApplicationController
   # GET /visuals/new
   # GET /visuals/new.json
   def new
-    @visual = Visual.new
+    @visual = current_user.visuals.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +36,13 @@ class VisualsController < ApplicationController
 
   # GET /visuals/1/edit
   def edit
-    @visual = Visual.find(params[:id])
+    @visual = current_user.visuals.find(params[:id])
   end
 
   # POST /visuals
   # POST /visuals.json
   def create
-    @visual = Visual.new(params[:visual])
+    @visual = current_user.visuals.new(params[:visual])
 
     respond_to do |format|
       if @visual.save
@@ -56,7 +58,7 @@ class VisualsController < ApplicationController
   # PUT /visuals/1
   # PUT /visuals/1.json
   def update
-    @visual = Visual.find(params[:id])
+    @visual = current_user.visuals.find(params[:id])
 
     respond_to do |format|
       if @visual.update_attributes(params[:visual])
@@ -72,7 +74,7 @@ class VisualsController < ApplicationController
   # DELETE /visuals/1
   # DELETE /visuals/1.json
   def destroy
-    @visual = Visual.find(params[:id])
+    @visual = current_user.visuals.find(params[:id])
     @visual.destroy
 
     respond_to do |format|
