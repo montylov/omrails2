@@ -1,9 +1,17 @@
- <tr>
- 	<td><%= image_tag visual.image( :medium) %></td>
-	<td><%= visual.description %></td>
-	<td><%= link_to 'Show', visual %></td>
+<div class="box">
+	<%= link_to (image_tag visual.image( :medium)), visual %>
+	<p class="description">
+		<%= visual.description %>
+	</p>
+	<p>
+		<strong>
+			Posted by <%= visual.user.name %>
+		</strong>
+	</p>
 	<% if current_user == visual.user %>
-	<td><%= link_to 'Edit', edit_visual_path(visual) %></td>
-	<td><%= link_to 'Delete', visual, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<p>	
+			<%= link_to 'Edit', edit_visual_path(visual) %>
+			<%= link_to 'Delete', visual, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</p>	
 	<% end %>
-</tr>
+</div>
