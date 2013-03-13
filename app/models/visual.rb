@@ -9,10 +9,6 @@ class Visual < ActiveRecord::Base
 															 size: { less_than: 5.megabytes }
 
   belongs_to :user
-  has_attached_file :image, styles:{ medium: "320x240>", thumb: "80x60>"},
-		:storage => :s3,
-		:s3_credentials => "#{Rails.root}/config/s3.yml",
-		:path => ":attachment/:id/:style.:extension",
-		:bucket => "Omrails2"
+  has_attached_file :image, styles: { medium: "320x240"}
   
 end

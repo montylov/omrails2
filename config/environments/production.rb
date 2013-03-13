@@ -72,9 +72,9 @@ Omrails::Application.configure do
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
-    :bucket => ENV['Omrails2'],
-    :access_key_id => ENV['AKIAIAQEQHPLXF6NM2AQ'],
-    :secret_access_key => ENV['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']
+    :bucket => "titanAE",
+    :access_key_id => "AKIAIAQEQHPLXF6NM2AQ",
+    :secret_access_key => "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",
   }
 }
 end
